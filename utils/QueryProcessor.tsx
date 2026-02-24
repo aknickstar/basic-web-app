@@ -17,7 +17,7 @@ export default function QueryProcessor(query: string): string {
   }
   if (query.toLowerCase().includes("largest")) {
       const numbers = query.match(/\d+/g)?.map(Number) || [];
-      return '${Math.max(...numbers)}';  
+      return Math.max(...numbers).toString(10);  
       
   }
   if (query.toLowerCase().includes("plus")) {
