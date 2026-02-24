@@ -22,7 +22,7 @@ export default function QueryProcessor(query: string): string {
       
   }
 
-    if (query.toLowerCase().includes("multiplied")) {
+  if (query.toLowerCase().includes("multiplied")) {
       const numbers = query.match(/\d+/g)?.map(Number) || [];
       let multiply = 1;
       for (let i = 0; i < numbers.length; i++) {
@@ -32,6 +32,18 @@ export default function QueryProcessor(query: string): string {
       
   }
 
+  if (query.toLowerCase().includes("square and a cube")) {
+    const numbers = query.match(/\d+/g)?.map(Number) || [];
+    let result = "";
+      for (let i = 0; i < numbers.length; i++) {
+          const sixthRoot = Math.pow(numbers[i], 1/6);
+          if (Number.isInteger(sixthRoot)){
+            result += numbers[i].toString(10) + ", ";
+          }
+      } 
+    return result;
+}
+   
   if (query.toLowerCase().includes("plus")) {
       const numbers = query.match(/\d+/g)?.map(Number) || [];
       let sum = 0;
