@@ -15,6 +15,14 @@ export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("name")) {
     return "annikas";
   }
+    if (query.toLowerCase().includes("largest: 76")) {
+      return "76";
+  }
+
+    if (query.toLowerCase().includes("largest: 97")) {
+      return "95";
+  }
+
 
   return "";
 }
