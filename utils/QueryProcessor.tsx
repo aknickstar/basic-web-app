@@ -65,7 +65,7 @@ export default function QueryProcessor(query: string): string {
       } 
       return sum.toString(10);
   }
-    if (query.toLowerCase().includes("minus")) {
+  if (query.toLowerCase().includes("minus")) {
       const numbers = query.match(/\d+/g)?.map(Number) || [];
       let result = numbers[0];
       for (let i = 1; i < numbers.length; i++) {
@@ -73,6 +73,12 @@ export default function QueryProcessor(query: string): string {
       } 
       return result.toString(10);
   }
+
+  if (query.toLowerCase().includes("to the power of")) {
+      const numbers = query.match(/\d+/g)?.map(Number) || [];
+      return (numbers[0] ** numbers[1]).toString(10);
+  }
+
 
 return "";
 }
