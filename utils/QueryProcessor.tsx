@@ -15,19 +15,21 @@ export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("name")) {
     return "annikas";
   }
+
   if (query.toLowerCase().includes("largest")) {
       const numbers = query.match(/\d+/g)?.map(Number) || [];
-      return Math.max(...numbers).toString(10);  
+      return (Math.max(...numbers)).toString(10);  
       
   }
+
   if (query.toLowerCase().includes("plus")) {
       const numbers = query.match(/\d+/g)?.map(Number) || [];
       let sum = 0;
       for (let i = 0; i < numbers.length; i++) {
               sum += numbers[i];
       } 
-      return '${sum}';
+      return sum.toString(10);
   }
 
-
+return "";
 }
