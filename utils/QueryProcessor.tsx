@@ -34,14 +34,16 @@ export default function QueryProcessor(query: string): string {
 
   if (query.toLowerCase().includes("square and a cube")) {
     const numbers = query.match(/\d+/g)?.map(Number) || [];
-    let result = "";
+    const result = [];
       for (let i = 0; i < numbers.length; i++) {
           const sixthRoot = Math.pow(numbers[i], 1/6);
           if (Number.isInteger(sixthRoot)){
-            result += numbers[i].toString(10) + ", ";
+            result.push(numbers[i]);
           }
       } 
-    return result;
+
+    return result.join(" , ");
+
 }
   if (query.toLowerCase().includes("prime")) {
     const numbers = query.match(/\d+/g)?.map(Number) || [];
@@ -62,6 +64,14 @@ export default function QueryProcessor(query: string): string {
               sum += numbers[i];
       } 
       return sum.toString(10);
+  }
+    if (query.toLowerCase().includes("minus")) {
+      const numbers = query.match(/\d+/g)?.map(Number) || [];
+      let result = numbers[0];
+      for (let i = 1; i < numbers.length; i++) {
+              result -= numbers[i];
+      } 
+      return result.toString(10);
   }
 
 return "";
