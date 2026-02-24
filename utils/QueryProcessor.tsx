@@ -22,6 +22,16 @@ export default function QueryProcessor(query: string): string {
       
   }
 
+    if (query.toLowerCase().includes("multiplied")) {
+      const numbers = query.match(/\d+/g)?.map(Number) || [];
+      let multiply = 1;
+      for (let i = 0; i < numbers.length; i++) {
+              multiply = multiply * numbers[i];
+      } 
+      return multiply.toString(10);  
+      
+  }
+
   if (query.toLowerCase().includes("plus")) {
       const numbers = query.match(/\d+/g)?.map(Number) || [];
       let sum = 0;
